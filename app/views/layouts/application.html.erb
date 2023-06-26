@@ -8,9 +8,19 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <body>
-    <%= yield %>
+    <header class="navbar navbar-fixed-top" style="background-color: #1B5678">
+      <div class="container-fluid">
+        <%= link_to "My Portfolio", '#', id: "app_name" %>
+        <a href="#" class="btn btn-lg btn-default", id="login">ログイン</a>
+      </div>
+    </header>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
   </body>
 </html>

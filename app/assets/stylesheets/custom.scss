@@ -1,0 +1,77 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* universal */
+
+/* header */
+header {
+  .container-fluid::before, .container-fluid::after {
+    display: none;
+  }
+  .container-fluid {
+    padding: 30px 0px;
+    margin: 0px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    #app_name {
+      color: white;
+      text-decoration: none;
+      font-size: xx-large;
+      font-weight: bold;
+    }
+    #login {
+      padding: 16px 40px; 
+    }
+  }
+}
+  
+.center {
+  text-align: center;
+  padding: 30px 50px;
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .img {
+      margin-right: 15px;
+    }
+    .introduce {
+      text-align: left;
+      h1 {
+        span {
+          border-bottom: 2px solid;
+          padding-bottom: 10px;
+          padding-right: 100px;
+        }
+      }
+      p {
+        margin-top: 40px;
+        color: red;
+        font-size: large;
+        font-weight: 300;
+      }
+    }
+  }
+  .skillchart {
+    margin-top: 80px;
+    h1 {
+      span {
+        border-bottom: 2px solid;
+        padding: 0px 60px 10px 60px;
+      }
+    }
+    .chart {
+      margin: 100px 120px 0px 120px;
+      text-align: center;
+    }
+    p {
+      font-size: small;
+    }
+  }
+}
+
+body {
+  padding-top: 120px;
+}
+
