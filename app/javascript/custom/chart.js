@@ -1,3 +1,7 @@
+import { Chart, registerables } from "chart.js";
+Chart.register(...registerables);
+
+
 const ctx = document.getElementById('myChart');
 
 const chart = new Chart(ctx, {
