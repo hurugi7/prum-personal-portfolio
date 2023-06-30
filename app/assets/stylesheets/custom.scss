@@ -1,7 +1,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* mixins */
+
+@mixin under_line_form {
+  border: none;
+}
+
 /* universal */
+h1 {
+  text-align: center;
+  margin: 80px 0px;
+}
 
 /* header */
 header {
@@ -20,11 +30,25 @@ header {
       font-size: xx-large;
       font-weight: bold;
     }
-    #login {
+    #btn {
       padding: 16px 40px; 
     }
   }
 }
+
+/* footer */
+footer {
+  background-color: #1B5678;
+  color: white;
+  margin-top: 50px;
+  h4 {
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: normal;
+    margin-bottom: 0px;
+  }
+}
+
   
 /* home */
 .center {
@@ -82,5 +106,58 @@ header {
 
 body {
   padding-top: 120px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  .main {
+    flex: 1;
+  }
 }
 
+
+
+/* forms */
+input, textarea, select {
+  width: 50%;
+  margin-bottom: 25px;
+  @include under_line_form;
+}
+
+input:focus {
+  outline: 0;
+}
+
+label {
+  font-size: smaller;
+  font-weight: 200;
+}
+
+form {
+  .btn {
+    background-color: #1B5678;
+    color: white;
+    margin-top: 50px;
+    font-size: large;
+    font-weight: 200;
+  }
+}
+
+
+.self-form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 16px;
+  line-height: 1.428571429;
+  color: #555555;
+  border-bottom: 1px solid;
+}
+
+#session_password {
+  font-size: 50px;
+}
+
+#login_title {
+  font-weight: normal;
+}

@@ -1,0 +1,16 @@
+<header class="navbar navbar-fixed-top" style="background-color: #1B5678">
+  <div class="container-fluid">
+    <% if logged_in? %>
+    <%= link_to "My Portfolio", user_path(@user), id: "app_name" %>
+    <% else %>
+      <%= link_to "My Portfolio", root_path, id: "app_name" %>
+    <% end %>
+    <% if logged_in? %>
+      <%= link_to "ログアウト", logout_path, data: { "turbo-method": :delete },
+          class: "btn btn-lg btn-default", id: "btn" %>
+    <% else %>
+      <%= link_to "ログイン", login_path, class: "btn btn-lg btn-default",
+        id: "btn" %>
+    <% end %>
+  </div>
+</header>
