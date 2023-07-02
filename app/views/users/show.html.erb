@@ -8,11 +8,12 @@
     <div class="introduce">
       <h2><span>自己紹介</span></h2>
       <p class="real"><%= @user.introduce_messages %></p>
-      <%= link_to "自己紹介を編集する", edit_user_path(@user) %>
+      <%= link_to "自己紹介を編集する", edit_user_path(@user), class: "btn" %>
     </div>
   </div>
   <div class="skillchart">
     <h2><span>スキルチャート</span></h2>
+    <%= link_to "スキルを編集する", "#", class: "btn" %>
     <div class="chart">
       <p>Chart.js Bar Chart</p>
       <canvas id="myChart" style="postion: relative; height:30; width:150;"></canvas>
