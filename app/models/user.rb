@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :skills
   before_save { email.downcase!}
   has_one_attached :avatar_image do |attachable|
     attachable.variant :display, resize_to_limit: [500, 500]

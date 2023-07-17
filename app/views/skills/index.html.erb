@@ -1,0 +1,65 @@
+<% provide(:title, "スキル編集") %>
+
+<div class="skill-index">
+  <% @categories.each do |category| %>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h3><%= category.name %></h3>
+        <%= link_to "スキルを追加する", 
+            new_skill_path(category_name: category.name, 
+                            category_id: category.id), class: "skill-add" %>
+      </div>
+      <% unless category.skills.empty? %>
+        <table class="table">
+          <div class="thead">
+            <tr>
+              <th class="th-name">習得スキル</th>
+              <th class="th-level">習得レベル</th>
+            </tr>
+          </div>
+          <% category.skills.each do |skill| %>
+            <div class="tbody">
+              <tr>
+                <% if skill.updated_at.between?(Time.current.beginning_of_month, Time.current.end_of_month)%>
+                  <th style="vertical-align: middle" class="th-name"><%= skill.name %></th>
+                  <%= form_with(model: skill, method: "patch") do |f| %>
+                    <th style="vertical-align: middle" class="th-level">
+                      <%= f.select :level, (1..100), { selected: "#{skill.level}" }, class: "level-number", id: "skill_level_#{skill.id}" %>
+                      <i class="fa-solid fa-caret-down"></i>
+                    </th>
+                    <th style="vertical-align: middle" class="th-save">
+                      <%= f.submit "習得レベルを保存する", class: "level-save" %>
+                    </th>
+                  <% end %>
+                  <th style="vertical-align: middle" class="th-delete">
+                    <%= link_to "スキルを削除する", skill_path(skill.id), data: { "turbo-method": :delete,
+                                                                              turbo_confirm: "本当に削除しますか？" }, class: 'level-delete' %>
+                  </th>
+                <% else %>
+                  <% if !category.skills.group(:name).count.to_a.select { |skill| skill[1] >= 2 }.any? %> 
+                    <th style="vertical-align: middle" class="th-name"><%= skill.name %></th>
+                    <%= form_with(model: @skill, method: "post") do |f| %>
+                      <th style="vertical-align: middle" class="th-level">
+                        <%= f.select :level, (1..100), { selected: "#{skill.level}" }, class: "level-number", id: "skill_level_#{skill.id}" %>
+                        <i class="fa-solid fa-caret-down"></i>
+                      </th>
+                        <%= f.hidden_field :name, :value => skill.name %>
+                        <%= f.hidden_field :category_id, :value => skill.category_id %>
+                      <th style="vertical-align: middle" class="th-save">
+                        <%= f.submit "習得レベルを保存する", class: "level-save" %>
+                      </th>
+                    <% end %>
+                    <th style="vertical-align: middle" class="th-delete">
+                      <%= link_to "スキルを削除する", skill_path(skill.id), data: { "turbo-method": :delete,
+                                                                                turbo_confirm: "本当に削除しますか？" }, class: 'level-delete' %>
+                    </th>
+                  <% end %>
+                <% end %>
+              </tr>
+            </div>
+          <% end %>
+        </table>
+      <% end %>
+    </div>
+  <% end %>
+</div>

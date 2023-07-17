@@ -1,22 +1,28 @@
+<% content_for :js do %>
+  <%= javascript_import_module_tag "custom/image_upload" %>
+<% end %>
 <% provide(:title, "プロフィール編集") %>
 <div class="page_title">
   <h1 id="profile_edit">自己紹介を編集する</h1>
 </div>
 
-<div class="row">
-    <div class="profile_edit col-md-6 col-md-offset-3">
-      <%= form_with(model: @user) do |f| %>
-        <%= render 'shared/error_messages', object: @user %>
-        
+<%= form_with(model: @user, class: "profile_edit") do |f| %>
+  <%= render 'shared/error_messages', object: @user %>
+  
+  <div class="profile">
+    <div class="self-introduction">
+      <div class="input">
         <%= f.label :introduce_messages, "自己紹介文" %>
         <%= f.text_area :introduce_messages, class: 'text-form-control', size: "40x5" %>
-        <p>200文字以上、800文字未満で入力してください</p>
-
-        <%= f.label :avatar_image, "アバター画像" %>
-        <%= f.label :avatar_image, "画像ファイルを添付する", class: "image_input_btn" %>
-        <%= f.file_field :avatar_image, class: "image_form", accept: "image/jpeg,image/gif,image/png" %>
-
-        <%= f.submit "自己紹介を確定する", class: "btn btn-lg center-block" %>
-      <% end %>
+      </div>
+      <p>200文字以上、800文字未満で入力してください</p>
     </div>
-</div>
+    <div class="img-upload">
+      <%= f.label :avatar_image, "アバター画像" %>
+      <%= f.label :avatar_image, "画像ファイルを添付する", class: "image_input_btn" %>
+      <%= f.file_field :avatar_image, class: "image_form", accept: "image/jpeg,image/gif,image/png" %>
+    </div>
+  </div>
+
+  <%= f.submit "自己紹介を確定する", class: "btn center-block" %>
+<% end %>

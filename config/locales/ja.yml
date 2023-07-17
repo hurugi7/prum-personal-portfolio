@@ -8,6 +8,9 @@ ja:
         password: パスワード
         introduce_messages: 自己紹介文
         avatar_image: プロフィール画像
+      skill:
+        name: 習得スキル名
+        level: 習得レベル
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

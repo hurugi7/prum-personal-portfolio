@@ -1,0 +1,27 @@
+<% provide(:title, "スキル追加") %>
+
+<div class="skill container">
+  <h1><%= @name_params %>にスキルを追加</h1>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_with(model: @skill) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.label :name, "習得スキル名" %>
+        <%= f.text_field :name, class: 'self-form-control' %>
+
+        <div class="level-new-group">
+          <%= f.label :level, "習得レベル" %>
+          <%= f.select :level, (1..100), {},
+                                     class: 'self-form-control level-new' %>
+          <i class="fa-solid fa-caret-down"></i>
+          <p>0~100の間で選択してください</p>
+        </div>
+
+        <%= f.hidden_field :category_id, value: "#{@id_params}" %>
+        <%= f.submit "追加する", class: "btn btn-lg center-block"%>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,7 @@
+<% content_for :js do %>
+  <%= javascript_import_module_tag "custom/bar_chart" %>
+<% end %>
+<div id="months" data-json="<%= @months.to_json %>"></div>
 <% provide(:title, "Home") %>
 <div class="center">
   <div class="container">

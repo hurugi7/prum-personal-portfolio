@@ -1,4 +1,10 @@
-
+<% content_for :js do %>
+  <%= javascript_import_module_tag "custom/bar_chart" %>
+<% end %>
+<div id="months" data-json="<%= @months.to_json %>"></div>
+<div id="back_chart" data-json="<%= @back_chart.to_json %>"></div>
+<div id="front_chart" data-json="<%= @front_chart.to_json %>"></div>
+<div id="infra_chart" data-json="<%= @infra_chart.to_json %>"></div>
 <div class="center">
   <div class="container">
     <div class="img">
@@ -13,10 +19,11 @@
   </div>
   <div class="skillchart">
     <h2><span>スキルチャート</span></h2>
-    <%= link_to "スキルを編集する", "#", class: "btn" %>
+    <%= link_to "スキルを編集する", skills_path, class: "btn" %>
     <div class="chart">
-      <p>Chart.js Bar Chart</p>
-      <canvas id="myChart" style="postion: relative; height:30; width:150;"></canvas>
+      <div style="display: block; box-sizing: border-box; height: 500px; width: 1064px; margin-left: 20px;">
+        <canvas id="myChart"></canvas>
+      </div>
     </div>
   </div>
 </div>

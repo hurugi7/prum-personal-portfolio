@@ -1,0 +1,37 @@
+ruby:
+  name: Ruby
+  level: 1
+  created_at: <%= Time.current.last_month %>
+  updated_at: <%= Time.current.last_month.end_of_month %>
+  user: michael
+  category: back
+
+php:
+  name: PHP
+  level: 3
+  user: thomas
+  category: back
+
+javascript: 
+  name: JavaScript
+  level: 9
+  user: michael
+  category: front
+
+html:
+  name: HTML
+  level: 5
+  user: thomas
+  category: front
+
+aws: 
+  name: AWS
+  level: 8
+  user: thomas
+  category: infra
+
+heroku:
+  name: Heroku
+  level: 2
+  user: michael
+  category: infra
