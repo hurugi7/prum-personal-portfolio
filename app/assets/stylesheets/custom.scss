@@ -86,11 +86,11 @@ footer {
   padding: 30px 50px;
   .container {
     display: flex;
-    justify-content: center;
-    vertical-align: top;
+    align-items: flex-start;
+    gap: 80px;
+    align-self: stretch;
     margin-top: 50px;
     .img {
-      margin-right: 80px;
       img {
         width: 360px;
         height: 360px;
@@ -109,7 +109,7 @@ footer {
         margin-top: 40px;
         font-size: 18px;
         font-weight: 400;
-        width: 70%;
+        width: 100%;
         font-style: normal;
         line-height: 150%;
         color: rgba(0, 0, 0, 0.75);
@@ -118,7 +118,7 @@ footer {
         margin-top: 40px;
         font-size: 18px;
         font-weight: 400;
-        width: 70%;
+        width: 100%;
         font-style: normal;
         line-height: 150%;
         color: red;
