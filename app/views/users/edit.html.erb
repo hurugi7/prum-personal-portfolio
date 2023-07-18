@@ -6,7 +6,7 @@
   <h1 id="profile_edit">自己紹介を編集する</h1>
 </div>
 
-<%= form_with(model: @user, class: "profile_edit") do |f| %>
+<%= form_with(model: @user, class: "profile_edit", local: true) do |f| %>
   <%= render 'shared/error_messages', object: @user %>
   
   <div class="profile">

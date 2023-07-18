@@ -70,7 +70,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.avatar_image.attach(params[:user][:avatar_image]) if @user.avatar_image.blank?
     if @user.update(user_params)
-      flash[:success] = "プロフィールが更新されました"
       redirect_to @user
     else
       render 'edit', status: :unprocessable_entity

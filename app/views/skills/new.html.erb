@@ -5,7 +5,7 @@
 
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <%= form_with(model: @skill) do |f| %>
+      <%= form_with(model: @skill, local: true) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
         <%= f.label :name, "習得スキル名" %>

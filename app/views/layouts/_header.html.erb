@@ -6,8 +6,8 @@
       <%= link_to "My Portfolio", root_path, id: "app_name" %>
     <% end %>
     <% if logged_in? %>
-      <%= link_to "ログアウト", logout_path, data: { "turbo-method": :delete },
-          class: "btn btn-lg btn-default", id: "btn" %>
+      <%= button_to "ログアウト", logout_path, method: :delete,
+          class: "btn btn-lg" %>
     <% else %>
       <%= link_to "ログイン", login_path, class: "btn btn-lg btn-default",
         id: "btn" %>

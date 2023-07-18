@@ -19,7 +19,7 @@ class SkillsController < ApplicationController
     @user = User.find(session[:user_id])
     @skill = current_user.skills.build(skill_params)
     if @skill.save
-      flash[:success] = "スキルの登録に成功しました"
+      flash[:notice] = "#{@skill.category.name}に#{@skill.name}を習得レベル#{@skill.level}で追加しました！"
       redirect_to skills_url
     else
       render 'skills/new', status: :unprocessable_entity
@@ -30,7 +30,7 @@ class SkillsController < ApplicationController
     @user = User.find(session[:user_id])
     @skill = current_user.skills.find(params[:id])
     if @skill.update!(skill_params)
-      flash[:success] = "{スキル名}の習得レベルを保存しました！"
+      flash[:success] = "#{@skill.name}の習得レベルを保存しました！"
       redirect_to skills_url
     else
     end
@@ -41,8 +41,9 @@ class SkillsController < ApplicationController
 
   def destroy
     @user = User.find(session[:user_id])
-    @user.skills.find(params[:id]).destroy
-    flash[:success] = "スキルを削除しました"
+    @skill = @user.skills.find(params[:id])
+    @skill.destroy
+    flash[:danger] = "#{@skill.name}の項目を削除しました！"
     redirect_to skills_url, status: :see_other
   end
 

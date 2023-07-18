@@ -7,5 +7,8 @@ class StaticPagesController < ApplicationController
                 Date.today.last_month.strftime("%B"),
                 Date.today.strftime("%B")
               ]
+    @back_chart = [0, 0, 0]
+    @front_chart = [0, 0, 0]
+    @infra_chart = [0, 0, 0]
   end
 end

@@ -1,5 +1,37 @@
 <% provide(:title, "スキル編集") %>
 
+<% content_for :modal_success do %>
+  <h3><%= flash[:success] %></h3>
+<% end %>
+
+<% content_for :modal_danger do %>
+  <h3><%= flash[:danger] %></h3>
+<% end %>
+
+<% content_for :modal_notice do %>
+  <h3><%= flash[:notice] %></h3>
+<% end %>
+
+<section id="modalArea" class="modalArea">
+  <div class="modalBg"></div>
+  <div class="modalWrapper">
+    <div class="modalContents">
+      <% if flash[:success].present? %>
+        <%= yield(:modal_success) %>
+      <% end %>
+      <% if flash[:danger].present? %>
+        <%= yield(:modal_danger) %>
+      <% end %>
+      <% if flash[:notice].present? %>
+        <%= yield(:modal_notice) %>
+      <% end %>
+    </div>
+    <div id="closeModal" class="closeModal">
+      <button>スキル編集ページに戻る</button>
+    </div>
+  </div>
+</section>
+
 <div class="skill-index">
   <% @categories.each do |category| %>
     <div class="panel panel-default">
@@ -22,7 +54,7 @@
               <tr>
                 <% if skill.updated_at.between?(Time.current.beginning_of_month, Time.current.end_of_month)%>
                   <th style="vertical-align: middle" class="th-name"><%= skill.name %></th>
-                  <%= form_with(model: skill, method: "patch") do |f| %>
+                  <%= form_with(model: skill, method: "patch", local: true) do |f| %>
                     <th style="vertical-align: middle" class="th-level">
                       <%= f.select :level, (1..100), { selected: "#{skill.level}" }, class: "level-number", id: "skill_level_#{skill.id}" %>
                       <i class="fa-solid fa-caret-down"></i>
@@ -32,8 +64,7 @@
                     </th>
                   <% end %>
                   <th style="vertical-align: middle" class="th-delete">
-                    <%= link_to "スキルを削除する", skill_path(skill.id), data: { "turbo-method": :delete,
-                                                                              turbo_confirm: "本当に削除しますか？" }, class: 'level-delete' %>
+                    <%= button_to "スキルを削除する", skill_path(skill.id), method: :delete, class: 'level-delete' %>
                   </th>
                 <% else %>
                   <% if !category.skills.group(:name).count.to_a.select { |skill| skill[1] >= 2 }.any? %> 
@@ -50,8 +81,7 @@
                       </th>
                     <% end %>
                     <th style="vertical-align: middle" class="th-delete">
-                      <%= link_to "スキルを削除する", skill_path(skill.id), data: { "turbo-method": :delete,
-                                                                                turbo_confirm: "本当に削除しますか？" }, class: 'level-delete' %>
+                      <%= button_to "スキルを削除する", skill_path(skill.id), method: :delete, class: 'level-delete' %>
                     </th>
                   <% end %>
                 <% end %>

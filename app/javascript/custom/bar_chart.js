@@ -1,7 +1,6 @@
-document.addEventListener("turbo:load", function() {
-  
   const ctx = document.getElementById('myChart');
   var months = JSON.parse(document.getElementById('months').dataset.json);
+
 
   var back_chart = JSON.parse(document.getElementById('back_chart').dataset.json);
   var front_chart = JSON.parse(document.getElementById('front_chart').dataset.json);
@@ -40,4 +39,3 @@ document.addEventListener("turbo:load", function() {
       }
     }
   });
-});
